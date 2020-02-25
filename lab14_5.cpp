@@ -3,7 +3,7 @@
 #include <ctime>
 using namespace std;
 
-void shuffle(int &,int &, int &, int &); //Modify input arguments to pointer 
+void shuffle(int *,int *, int *, int *);
 
 int main(){
 	int a = 50, b = 100, c = 500, d = 1000;
@@ -11,11 +11,27 @@ int main(){
 	srand(time(0));	
 	
 	for(int i = 0;i < 10;i++){
-	    shuffle(a,b,c,d); //Modify input arguments to pointer 
+		shuffle(&a,&b,&c,&d);
 	    cout << a << " " << b << " " << c << " " << d << "\n";
 	}
 	
 	return 0;
 }
+void shuffle(int *a,int *b, int *c, int *d){
+	int idx[] = {*a,*b,*c,*d};
 
-//Write definition of shuffle() using pointer here 
+	for (int i = 0; i < 10; i++)
+	{
+		int j = rand()%4;
+		int k = rand()%4;
+		int x = idx[j];
+		idx[j] = idx[k];
+		idx[k] = x;
+		
+	}
+	*a = idx[0];
+	*b = idx[1];
+	*c = idx[2];
+	*d = idx[3];
+	
+}

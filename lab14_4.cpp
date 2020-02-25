@@ -11,11 +11,23 @@ int main(){
 	srand(time(0));	
 	
 	for(int i = 0;i < 10;i++){
-	    shuffle(a,b,c,d);
+		shuffle(a,b,c,d);
 	    cout << a << " " << b << " " << c << " " << d << "\n";
 	}
 	
 	return 0;
 }
+void shuffle(int &a,int &b, int &c, int &d){
+	int *idx[] = {&a,&b,&c,&d};
 
-//Write definition of shuffle() here 
+	for (int i = 0; i < 10; i++)
+	{
+		int j = rand()%4;
+		int k = rand()%4;
+		int x = *idx[j];
+		*idx[j] = *idx[k];
+		*idx[k] = x;
+		
+	}
+	
+}
